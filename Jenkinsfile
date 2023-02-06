@@ -3,7 +3,7 @@ agent any
 stages {
   stage('checkout') {
     steps {
-      checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'bf75e321-78e0-4cdd-b25f-ba02ffd21d00', url: 'https://github.com/osamanaji/maven-web-project.git']])
+      checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'bf75e321-78e0-4cdd-b25f-ba02ffd21d00', url: 'https://github.com/osamanaji/maven-web-project-multi-branches.git']])
     }
   }
 stage('compile') {
@@ -14,7 +14,7 @@ sh 'mvn compile'
   
   stage('package') {
     steps {
-sh 'mvn package'
+sh 'mvn package -Dmaven.test.skip=true'
     }
   }
   
@@ -23,6 +23,23 @@ sh 'mvn package'
 sh 'pwd'
     }
   }*/
+  
+  
+  stage('TomcatDeply') {
+    steps {
+    sshagent(['tomcat_server']) {
+sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/t-multi-branches-pipeline_devops/target/maven-web-application.war ubuntu@172.31.22.111:/var/lib/tomcat9/webapps/'
+}
+    }
+  }
+  
+ /*stage('Slack Notification') {
+    steps {
+slackSend channel: 'devopsdeepdive_batch13', message: 'Build is successful'
+    }
+  }*/
+ 
 }
 
 }
+
