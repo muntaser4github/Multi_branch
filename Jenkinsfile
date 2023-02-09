@@ -17,7 +17,13 @@ sh 'mvn compile'
 sh 'mvn package -Dmaven.test.skip=true'
     }
   }
-  
+  stage('TomcatDeply') {
+    steps {
+    sshagent(['tomcat']) {
+sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/maven-web-project-multi-branches/target/teavm-maven-webapp-1.0-SNAPSHOT.war ubuntu@172.31.0.57:/var/lib/tomcat9/webapps/'
+}
+    }
+  }
 }
 
 }
