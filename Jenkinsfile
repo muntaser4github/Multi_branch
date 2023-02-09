@@ -18,27 +18,6 @@ sh 'mvn package -Dmaven.test.skip=true'
     }
   }
   
-   /*stage('Print-working-directory') {
-    steps {
-sh 'pwd'
-    }
-  }*/
-  
-  
-   /*stage('TomcatDeply') {
-    steps {
-    sshagent(['tomcat_server']) {
-sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/t-multi-branches-pipeline_devops/target/maven-web-application.war ubuntu@172.31.22.111:/var/lib/tomcat9/webapps/'
-}*/
-    }
-  }
-  
- /*stage('Slack Notification') {
-    steps {
-slackSend channel: 'devopsdeepdive_batch13', message: 'Build is successful'
-    }
-  }*/
- 
 }
 
 }
