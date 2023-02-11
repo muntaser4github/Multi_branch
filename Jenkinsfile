@@ -30,4 +30,3 @@ sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/maven-web-project
     }
   }
 }
-}
