@@ -23,6 +23,7 @@ sh 'mvn package -Dmaven.test.skip=true'
 sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/maven-web-project-multi-branches/target/teavm-maven-webapp-1.0-SNAPSHOT.war ubuntu@172.31.0.57:/var/lib/tomcat9/webapps/'
 }
     }
+  }
   stage('Notification')
     steps{
       slackSend channel: 'devopsdeepdive_batch13', message: 'Build succussed  '
