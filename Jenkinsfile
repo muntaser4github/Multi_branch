@@ -24,7 +24,7 @@ sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/maven-web-project
 }
     }
   }
-  stage('Notification')
+  stage('Notification'){
     steps{
       slackSend channel: 'devopsdeepdive_batch13', message: 'Build succussed  '
     }
