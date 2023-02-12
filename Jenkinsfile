@@ -1,7 +1,7 @@
 pipeline {
 agent any
 stages {
-  stage('checkout') {
+  stage('The checkout') {
     steps {
       checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'github_maven_account', url: 'https://github.com/muntaser4github/maven-web-project-multi-branches.git']])
     }
@@ -29,7 +29,4 @@ sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/maven-web-project
 slackSend channel: 'devopsdeepdive_batch13', message: 'Build is successed'
     }
   }
- 
-}
-
-}
+ }
