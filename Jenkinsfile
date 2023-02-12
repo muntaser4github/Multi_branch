@@ -30,3 +30,4 @@ slackSend channel: 'devopsdeepdive_batch13', message: 'Build is successed'
     }
   }
  }
+}
