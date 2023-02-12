@@ -1,7 +1,7 @@
 pipeline {
 agent any
 stages {
-  stage('checkout') {
+  stage('the checkout') {
     steps {
       checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'github_maven_account', url: 'https://github.com/muntaser4github/maven-web-project-multi-branches.git']])
     }
